@@ -1,10 +1,11 @@
 const canvas = document.getElementById('gamefield');
 const ctx = canvas.getContext('2d');
 const rows = 50;
-const cols = 120;
+const cols = 110;
 const squareCell = 10;
 let grid;
 let intervalId;
+let generationCount = 0;
 
 
 //Fonction de la creation de la grille
@@ -19,12 +20,13 @@ function initGrid() {
     return randomGrid;
 }
 
-function createEmptyGrid() {
-    const resetGrid = [];
+//Fonction qui permet de rendre toutes les cellules mortes
+function resetGrid() {
+    const resetedGrid = [];
     for (let i = 0; i < rows; i++) {
-        resetGrid[i] = Array(cols).fill(0);
+        resetedGrid[i] = Array(cols).fill(0);
     }
-    return resetGrid;
+    return resetedGrid;
 }
 
 
@@ -59,8 +61,14 @@ function updateGrid() {
             }
         }
     }
+    generationCount++;
+    initCounter();
     grid = updatedGrid;
 }
+
+function initCounter(){
+    document.getElementById('generation-counter').innerText = `Générations : ${generationCount}`;
+};
 
 //comptage des voisins vivants qui va nous permettre de mettre à jour le jeu
 function countTotalAliveNeighbors(row, col) {
@@ -77,25 +85,46 @@ function countTotalAliveNeighbors(row, col) {
             }
         }
     }
+
     return total_neighbors;
 }
 
+//la fonction qui dessine les cellules
 function designGrid() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
-            ctx.fillStyle = grid[i][j] === 1 ? '#000' : '#fff';
+            ctx.fillStyle = grid[i][j] === 1 ? '#fa0' : '#000';
+            ctx.strokeStyle = '#fa0';
             ctx.fillRect(j * squareCell, i * squareCell, squareCell, squareCell);
             ctx.strokeRect(j * squareCell, i * squareCell, squareCell, squareCell);
         }
     }
 }
 
+
+
+
+function handleCanvasClick(event) {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const choosedCol = Math.floor(x / squareCell);
+    const choosedRow = Math.floor(y / squareCell);
+
+    // Inversez l'état de la cellule (0 devient 1 et vice versa)
+    grid[choosedRow][choosedCol] = 1 - grid[choosedRow][choosedCol];
+
+    designGrid(); // Redessinez la grille après le changement
+}
+
+
 function startGame() {
     intervalId = setInterval(() => {
         updateGrid();
         designGrid();
-    }, 200);
+    }, 100);
 }
 
 function stopGame() {
@@ -104,13 +133,26 @@ function stopGame() {
 
 function restartGame() {
     grid = initGrid();
+    generationCount = 0;
+    initCounter();
     console.log(grid);
     designGrid();
 }
 
+function resetGame() {
+    grid = resetGrid();
+    generationCount = 0;
+    initCounter();
+    designGrid();
+}
+
+canvas.addEventListener('mousedown', handleCanvasClick);
 document.getElementById('start').addEventListener('click', startGame);
 document.getElementById('stop').addEventListener('click', stopGame);
 document.getElementById('restart').addEventListener('click', restartGame);
+document.getElementById('reset').addEventListener('click', resetGame);
+
+
 
 
 // Initialisation du jeu

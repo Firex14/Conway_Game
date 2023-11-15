@@ -2,24 +2,24 @@
     text-align: center;
     background-color: #590202;
 }
-h1, h2{
+h1, h2,p{
     font-size: 1.5rem;
     color: White;
     margin: 0px;
-    margin-top: 1.5rem;
     font-weight: 400;
     font-style: italic;
 }
 .buttons > button{
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+    font-size: 1rem;
     padding: 10px;
     border: none;
     border-radius: 10px;
-    margin: 20px;
+    margin-right: 1.5rem;
+    margin-top: 1rem;
     font-weight: 300;
     outline: none;
     color: white;
+    cursor: pointer;
 }
 #start{
     background-color: green;
@@ -30,4 +30,8 @@ h1, h2{
 
 #stop{
     background-color: red;
+}
+#reset{
+    background-color: white;
+    color: #000;
 }
