@@ -1,0 +1,33 @@
+*{
+    text-align: center;
+    background-color: #590202;
+}
+h1, h2{
+    font-size: 1.5rem;
+    color: White;
+    margin: 0px;
+    margin-top: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+}
+.buttons > button{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 20px;
+    font-weight: 300;
+    outline: none;
+    color: white;
+}
+#start{
+    background-color: green;
+}
+#restart{
+    background-color: blue
+}
+
+#stop{
+    background-color: red;
+}
