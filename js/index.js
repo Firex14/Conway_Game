@@ -1,4 +1,5 @@
 const canvas = document.getElementById('gamefield');
+const gameMessageElement = document.getElementById('end-game');
 const context = canvas.getContext('2d');
 const rows = 50;
 const cols = 90;
@@ -32,6 +33,7 @@ function resetGrid() {
 //fonction pour mettre à jour la grille en fonction des voisins
 function updateGrid() {
     const updatedGrid = [];
+    let allCellsDead = true;
     
     for (let i = 0; i < rows; i++) {
         updatedGrid[i] = [];
@@ -39,7 +41,7 @@ function updateGrid() {
         for (let j = 0; j < cols; j++) {
 
             const total_neighbors = countTotalAliveNeighbors(i, j);
-
+            
             //si la cellule est vivante
             if (grid[i][j] === 1) {
 
@@ -48,11 +50,14 @@ function updateGrid() {
                     updatedGrid[i][j] = 0;
                 } else {
                     updatedGrid[i][j] = 1;
+                    allCellsDead = false;
                 }
             } else 
                 {
                     if (total_neighbors === 3) {
                         updatedGrid[i][j] = 1;
+                        allCellsDead = false;
+
                     }
                     else {
                     updatedGrid[i][j] = 0;
@@ -61,6 +66,10 @@ function updateGrid() {
         }
     }
  
+    if (allCellsDead) {
+        gameMessageElement.innerText = 'Le jeu est terminé.';
+        stopGame();
+    }
     grid = updatedGrid;
 }
 
@@ -116,6 +125,7 @@ function handleCanvasClick(event) {
 
 
 function startGame() {
+    gameMessageElement.innerText = '';
     intervalId = setInterval(() => {
         updateGrid();
         designGrid();
@@ -127,6 +137,7 @@ function stopGame() {
 }
 
 function restartGame() {
+    gameMessageElement.innerText = '';
     grid = initGrid();
     console.log(grid);
     designGrid();

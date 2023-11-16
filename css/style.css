@@ -49,3 +49,8 @@ p, li, strong{
     background-color: white;
     color: #000;
 }
+#end-game{
+    font-size: 1.5rem;
+    color: red;
+    text-align: center;
+}
