@@ -1,11 +1,10 @@
 const canvas = document.getElementById('gamefield');
-const ctx = canvas.getContext('2d');
+const context = canvas.getContext('2d');
 const rows = 50;
-const cols = 110;
+const cols = 90;
 const squareCell = 10;
 let grid;
 let intervalId;
-let generationCount = 0;
 
 
 //Fonction de la creation de la grille
@@ -61,14 +60,10 @@ function updateGrid() {
             }
         }
     }
-    generationCount++;
-    initCounter();
+ 
     grid = updatedGrid;
 }
 
-function initCounter(){
-    document.getElementById('generation-counter').innerText = `Générations : ${generationCount}`;
-};
 
 //comptage des voisins vivants qui va nous permettre de mettre à jour le jeu
 function countTotalAliveNeighbors(row, col) {
@@ -91,13 +86,13 @@ function countTotalAliveNeighbors(row, col) {
 
 //la fonction qui dessine les cellules
 function designGrid() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
-            ctx.fillStyle = grid[i][j] === 1 ? '#fa0' : '#000';
-            ctx.strokeStyle = '#fa0';
-            ctx.fillRect(j * squareCell, i * squareCell, squareCell, squareCell);
-            ctx.strokeRect(j * squareCell, i * squareCell, squareCell, squareCell);
+            context.fillStyle = grid[i][j] === 1 ? '#fa0' : '#000';
+            context.strokeStyle = '#fa0';
+            context.fillRect(j * squareCell, i * squareCell, squareCell, squareCell);
+            context.strokeRect(j * squareCell, i * squareCell, squareCell, squareCell);
         }
     }
 }
@@ -133,16 +128,12 @@ function stopGame() {
 
 function restartGame() {
     grid = initGrid();
-    generationCount = 0;
-    initCounter();
     console.log(grid);
     designGrid();
 }
 
 function resetGame() {
     grid = resetGrid();
-    generationCount = 0;
-    initCounter();
     designGrid();
 }
 
@@ -151,7 +142,6 @@ document.getElementById('start').addEventListener('click', startGame);
 document.getElementById('stop').addEventListener('click', stopGame);
 document.getElementById('restart').addEventListener('click', restartGame);
 document.getElementById('reset').addEventListener('click', resetGame);
-
 
 
 

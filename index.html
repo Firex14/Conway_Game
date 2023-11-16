@@ -9,10 +9,48 @@
 </head>
 <body>
     <main>
-        <h1>Jeu de la Vie de Conway</h1>
-        <h2>Vous démarrez en javascript pourquoi pas un jeu comme celui ci?</h2>
-        <p id="generation-counter">Générations : 0</p>
-        <canvas id="gamefield" width="800" height="400"></canvas>
+        <div class="game_desc mb-2">
+            <h1>Jeu de la Vie de Conway</h1>
+        <p>
+            Bienvenue dans le Jeu de la Vie, une simulation fascinante qui explore l'émergence de motifs complexes à partir de règles simples. 
+            Conçu par le mathématicien John Conway, ce jeu est un exemple classique de l'automate cellulaire.
+        </p>
+
+        <h2>Qu'est-ce que le Jeu de la Vie ?</h2>
+        <p>
+            Le Jeu de la Vie est un modèle mathématique où chaque cellule d'une grille 
+            bidimensionnelle peut être dans l'un des deux états : vivante ou morte. 
+            L'évolution de la grille est déterminée par des règles simples basées sur le nombre de 
+            voisins vivants autour de chaque cellule.
+        </p>
+        <h2>Comment cela fonctionne-t-il ?</h2>
+        <p> Le Jeu de la Vie fonctionne selon des règles simples, mais donne lieu à des comportements complexes :</p>
+
+        <ul>
+            <li>
+                <strong>Création de la grille :</strong> Au départ, une grille est créée avec un certain nombre de cellules vivantes et mortes. Vous pouvez démarrer avec une configuration aléatoire ou définir des motifs spécifiques.
+            </li>
+            <li>
+                <strong>Évolution des générations :</strong> À chaque étape, la grille évolue en suivant les règles du jeu. Les cellules naissent, survivent ou meurent en fonction du nombre de voisins vivants.
+            </li>
+            <li>
+                <strong>Règles de base :</strong>
+                <ul>
+                    <li>Une cellule vivante avec moins de deux voisins vivants meurt (sous-peuplement).</li>
+                    <li>Une cellule vivante avec deux ou trois voisins vivants survit.</li>
+                    <li>Une cellule vivante avec plus de trois voisins vivants meurt (surpopulation).</li>
+                    <li>Une cellule morte avec exactement trois voisins vivants devient vivante (naissance).</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Émergence de motifs :</strong> Au fil des générations, des motifs intéressants émergent, y compris des structures stables, des oscillateurs et des vaisseaux spatiaux.
+            </li>
+        </ul>
+
+        <h2>Expérimentez avec le Jeu !</h2>
+
+        </div>
+        <canvas id="gamefield" width="900" height="400"></canvas>
         <div class="buttons">
             <button id="start">Démarrer</button>
             <button id="stop">Arrêter</button>

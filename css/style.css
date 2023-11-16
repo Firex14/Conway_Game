@@ -1,13 +1,27 @@
 *{
     text-align: center;
-    background-color: #590202;
+    background-color: #000;
 }
-h1, h2,p{
+h1, h2{
     font-size: 1.5rem;
     color: White;
     margin: 0px;
     font-weight: 400;
     font-style: italic;
+}
+
+.game_desc{
+    width: 35rem;
+    margin: auto;
+}
+p, li, strong{
+    color: whitesmoke;
+    font-size: 1.2rem;
+    text-align: justify;
+    line-height: 1.3;
+}
+.mb-2{
+    margin-bottom: 2rem;
 }
 .buttons > button{
     font-size: 1rem;
