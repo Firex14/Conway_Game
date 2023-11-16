@@ -1,10 +1,9 @@
 *{
     text-align: center;
-    background-color: #000;
+    background-color: aliceblue;
 }
 h1, h2{
     font-size: 1.5rem;
-    color: White;
     margin: 0px;
     font-weight: 400;
     font-style: italic;
@@ -15,7 +14,6 @@ h1, h2{
     margin: auto;
 }
 p, li, strong{
-    color: whitesmoke;
     font-size: 1.2rem;
     text-align: justify;
     line-height: 1.3;
@@ -48,6 +46,12 @@ p, li, strong{
 #reset{
     background-color: white;
     color: #000;
+    border: 1px solid #000;
+}
+#gosperGlider{
+    background-color: rgb(1, 29, 114);
+    outline: #000;
+    color: white
 }
 #end-game{
     font-size: 1.5rem;

@@ -13,6 +13,7 @@ Une implémentation simple du Jeu de la Vie de Conway en utilisant HTML, JavaScr
 - **Arrêter :** Met fin à l'évolution du jeu.
 - **Redémarrer :** Relance le jeu avec un nouvel état initial.
 - **Effacer :** Permet d'effacer complètement la grille pour ainsi permettre à l'utilisateur de créer son propre état initial.
+- **Canon à Planeur de Gosper :** Permet de créer le motif spécial de Gosper très fun
 
 
 ## Règles du Jeu de la Vie
